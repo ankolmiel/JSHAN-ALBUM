@@ -1,0 +1,1363 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>JSHAN'S ALBUM ♡</title>
+
+<link rel="stylesheet" href="style.css">
+
+
+<style>
+/* =========================
+   GENERAL DESIGN
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --pink: #f5cbdc;
+  --light-pink: #ffeaf2;
+  --blue: #d8eaff;
+  --light-blue: #eff7ff;
+  --lavender: #e9e2fa;
+  --text: #526381;
+  --deep-pink: #c27f9d;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--text);
+
+  background:
+    radial-gradient(ellipse at 10% 15%, #ffe5ef 0%, transparent 35%),
+    radial-gradient(ellipse at 90% 25%, #c9e2ff 0%, transparent 38%),
+    radial-gradient(ellipse at 50% 80%, #e6dcfa 0%, transparent 40%),
+    linear-gradient(135deg, #f9dce9, #dcecff, #f8e4ef);
+
+  background-attachment: fixed;
+}
+
+/* =========================
+   FLOATING BACKGROUND DECOR
+========================= */
+
+.decorations {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.decor {
+  position: absolute;
+  opacity: 0.48;
+  user-select: none;
+  animation: float 7s ease-in-out infinite alternate;
+}
+
+.decor:nth-child(even) {
+  animation-delay: -3s;
+  animation-duration: 9s;
+}
+
+.decor:nth-child(3n) {
+  animation-duration: 11s;
+}
+
+.d1  { top: 8%; left: 5%; font-size: 30px; }
+.d2  { top: 18%; right: 7%; font-size: 25px; }
+.d3  { top: 35%; left: 3%; font-size: 23px; }
+.d4  { top: 49%; right: 4%; font-size: 32px; }
+.d5  { top: 65%; left: 7%; font-size: 26px; }
+.d6  { top: 78%; right: 8%; font-size: 24px; }
+.d7  { top: 90%; left: 25%; font-size: 20px; }
+.d8  { top: 12%; left: 45%; font-size: 19px; }
+.d9  { top: 55%; left: 48%; font-size: 18px; }
+.d10 { top: 85%; right: 30%; font-size: 25px; }
+.d11 { top: 28%; left: 20%; font-size: 18px; }
+.d12 { top: 72%; right: 20%; font-size: 20px; }
+.d13 { top: 42%; right: 18%; font-size: 19px; }
+.d14 { top: 5%; right: 30%; font-size: 22px; }
+.d15 { top: 95%; right: 5%; font-size: 20px; }
+
+@keyframes float {
+  from {
+    transform: translateY(0) rotate(-8deg);
+  }
+  to {
+    transform: translateY(-18px) rotate(8deg);
+  }
+}
+
+/* Soft decorative background circles */
+
+.glow {
+  position: fixed;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.28;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glow-one {
+  background: #f3aeca;
+  top: 20%;
+  left: -120px;
+}
+
+.glow-two {
+  background: #91c6ff;
+  bottom: 10%;
+  right: -120px;
+}
+
+/* Keep website content above decorations */
+
+header,
+.gallery,
+.hint,
+footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+  text-align: center;
+  padding: 65px 20px 30px;
+}
+
+.eyebrow {
+  color: #b77e9c;
+  letter-spacing: 5px;
+  font-size: 0.75rem;
+  margin-bottom: 15px;
+}
+
+header h1 {
+  margin: 0;
+  color: #596f9b;
+  font-size: clamp(2.3rem, 7vw, 4.5rem);
+  font-weight: normal;
+  text-shadow: 2px 3px 0 #ffffff9c;
+  animation: fadeDown 1s ease both;
+}
+
+header p {
+  color: #7b779c;
+  font-size: 1rem;
+  line-height: 1.8;
+  max-width: 500px;
+  margin: 18px auto 0;
+}
+
+.heart-divider {
+  color: #c68baa;
+  letter-spacing: 10px;
+  margin-top: 22px;
+  font-size: 1.1rem;
+}
+
+/* =========================
+   PHOTO GALLERY
+========================= */
+
+.gallery {
+  max-width: 1250px;
+  margin: 30px auto 65px;
+  padding: 25px;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 55px 30px;
+}
+
+.photo {
+  position: relative;
+  padding-top: 25px;
+  cursor: pointer;
+  transform-origin: top center;
+  animation: hangingSway 5s ease-in-out infinite alternate;
+  transition: filter 0.3s ease;
+}
+
+.photo:nth-child(2n) {
+  animation-delay: -2s;
+}
+
+.photo:nth-child(3n) {
+  margin-top: 25px;
+  animation-delay: -3s;
+}
+
+.photo:hover {
+  z-index: 5;
+  filter: drop-shadow(0 12px 15px #7185b644);
+}
+
+.photo:focus-visible {
+  outline: 3px solid #9db9ee;
+  outline-offset: 8px;
+  border-radius: 5px;
+}
+
+/* String */
+
+.photo::before {
+  content: "";
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  width: 2px;
+  height: 43px;
+  background: linear-gradient(#c2b0be, #9baed0);
+  transform: translateX(-50%);
+}
+
+/* Nail */
+
+.nail {
+  position: absolute;
+  top: -21px;
+  left: calc(50% - 5px);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #d9c7d4, #8498bd);
+  box-shadow: 0 2px 3px #53638145;
+  z-index: 2;
+}
+
+.frame {
+  position: relative;
+  padding: 9px 9px 40px;
+  background: linear-gradient(145deg, #fffefd, #fff6fb);
+  border: 1px solid #ffffff;
+  box-shadow: 0 8px 18px #7385a52b;
+  border-radius: 3px;
+  transform: rotate(var(--tilt, -3deg));
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.photo:hover .frame {
+  transform: rotate(0deg) scale(1.05);
+  box-shadow: 0 18px 28px #657eaa45;
+}
+
+.frame img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  background: #e4edfb;
+  transition: filter 0.4s ease;
+}
+
+.photo:hover .frame img {
+  filter: saturate(1.08) brightness(1.04);
+}
+
+.caption {
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  bottom: 11px;
+  color: #667496;
+  text-align: center;
+  font-size: 0.84rem;
+}
+
+/* Tiny heart on each photo */
+
+.photo::after {
+  content: "♡";
+  position: absolute;
+  right: -9px;
+  bottom: -12px;
+  color: #c88eaf;
+  font-size: 21px;
+  transform: rotate(12deg);
+  transition: transform 0.3s;
+}
+
+.photo:hover::after {
+  transform: rotate(-12deg) scale(1.3);
+}
+
+/* =========================
+   GALLERY INSTRUCTIONS
+========================= */
+
+.hint {
+  margin: 0 auto 65px;
+  padding: 0 20px;
+  text-align: center;
+  color: #787ba1;
+  font-style: italic;
+  line-height: 1.8;
+}
+
+.hint span {
+  color: #bd82a6;
+}
+
+/* =========================
+   MEMORY POPUP
+========================= */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: #354360b9;
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+  z-index: 20;
+  overflow-y: auto;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-content {
+  position: relative;
+  width: min(860px, 100%);
+  max-height: 92vh;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  align-items: start;
+  gap: 25px;
+  padding: 25px;
+  border: 1px solid #ffffffd9;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #fffafd, #edf5ff, #fcebf3);
+  box-shadow: 0 25px 70px #24365355;
+  animation: popup 0.35s ease;
+}
+
+.modal-photo {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  max-height: 490px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 8px 22px #7d8fb52b;
+}
+
+.details {
+  padding: 10px 3px;
+  min-width: 0;
+}
+
+.eyebrow-small {
+  color: #bd82a6;
+  font-size: 0.73rem;
+  letter-spacing: 3px;
+}
+
+.details h2 {
+  margin: 12px 0;
+  color: #596f9b;
+  font-size: 1.8rem;
+  font-weight: normal;
+}
+
+.song-name {
+  padding: 11px 13px;
+  margin: 15px 0 22px;
+  color: #806c9c;
+  background: #f5eaf8;
+  border-left: 3px solid #a9bfe9;
+  border-radius: 0 9px 9px 0;
+  line-height: 1.6;
+}
+
+.details h3 {
+  color: #6b789d;
+  font-weight: normal;
+  font-size: 1.15rem;
+}
+
+.lyrics {
+  max-height: 240px;
+  overflow-y: auto;
+  white-space: pre-line;
+  padding: 16px;
+  color: #526381;
+  background: linear-gradient(135deg, #edf5ff, #fcebf3);
+  border: 1px solid #dbe4f5;
+  border-radius: 12px;
+  line-height: 1.85;
+  font-size: 0.96rem;
+  scrollbar-color: #a9bce0 #edf2fa;
+}
+
+.status {
+  color: #9b7b9f;
+  font-size: 0.83rem;
+  line-height: 1.6;
+  margin-top: 15px;
+}
+
+.close {
+  position: sticky;
+  float: right;
+  top: 0;
+  margin: -12px -12px 0 0;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  color: #586c94;
+  background: #e4edff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 3;
+  transition: transform 0.25s, background 0.25s;
+}
+
+.close:hover {
+  background: #f4d4e4;
+  transform: rotate(90deg);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  text-align: center;
+  padding: 30px 15px 40px;
+  color: #7a7c9f;
+  line-height: 1.8;
+}
+
+footer .footer-heart {
+  color: #c78baa;
+  font-size: 1.2rem;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes hangingSway {
+  from { rotate: -1.3deg; }
+  to { rotate: 1.3deg; }
+}
+
+@keyframes popup {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 950px) {
+  .gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 45px 25px;
+  }
+}
+
+@media (max-width: 600px) {
+  header {
+    padding-top: 45px;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 17px;
+    gap: 38px 18px;
+  }
+
+  .frame {
+    padding: 7px 7px 35px;
+  }
+
+  .caption {
+    font-size: 0.75rem;
+  }
+
+  .modal {
+    padding: 12px;
+  }
+
+  .modal-content {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 18px;
+    max-height: 94vh;
+  }
+
+  .modal-photo {
+    min-height: 0;
+    height: 230px;
+  }
+
+  .details h2 {
+    font-size: 1.55rem;
+  }
+
+  .lyrics {
+    max-height: 190px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- DECORATIVE BACKGROUND -->
+
+<div class="decorations" aria-hidden="true">
+  <span class="decor d1">♡</span>
+  <span class="decor d2">✦</span>
+  <span class="decor d3">☁️</span>
+  <span class="decor d4">୨୧</span>
+  <span class="decor d5">✧</span>
+  <span class="decor d6">♡</span>
+  <span class="decor d7">☁️</span>
+  <span class="decor d8">✧</span>
+  <span class="decor d9">♡</span>
+  <span class="decor d10">✦</span>
+  <span class="decor d11">⋆</span>
+  <span class="decor d12">୨୧</span>
+  <span class="decor d13">✧</span>
+  <span class="decor d14">♡</span>
+  <span class="decor d15">⋆</span>
+</div>
+
+<div class="glow glow-one"></div>
+<div class="glow glow-two"></div>
+
+<!-- WEBSITE HEADER -->
+
+<header>
+  <div class="eyebrow">THE BEST LOVE STORY</div>
+
+  <h1>JSHAN'S ALBUM ♡</h1>
+
+  <p>
+    PURE GREATNESS.<br>
+    PURE LOVE.
+  </p>
+
+  <div class="heart-divider">♡ ✧ ♡ ✧ ♡</div>
+</header>
+
+<!-- PHOTO GALLERY -->
+
+<main class="gallery" id="gallery"></main>
+
+<p class="hint">
+  <span>♡</span> Click a hanging photo to witness greatness!
+  <span>♡</span>
+</p>
+
+<!-- MEMORY AND LYRICS POPUP -->
+
+<div class="modal" id="modal" aria-hidden="true">
+  <section
+    class="modal-content"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="memoryTitle"
+  >
+    <button
+      class="close"
+      id="closeButton"
+      aria-label="Close memory"
+    >×</button>
+
+    <img
+      class="modal-photo"
+      id="modalPhoto"
+      src=""
+      alt="Selected memory"
+    >
+
+    <div class="details">
+      <div class="eyebrow-small">♡ Shanemanuel ♡</div>
+
+      <h2 id="memoryTitle"></h2>
+
+      <div class="song-name" id="songName"></div>
+
+      <h3>Lyrics ♡</h3>
+
+      <div class="lyrics" id="lyrics"></div>
+
+      <p class="status" id="status">Preparing your song...</p>
+    </div>
+  </section>
+</div>
+
+<!-- MUSIC PLAYER -->
+
+<audio id="music" preload="none"></audio>
+
+<footer>
+  <div class="footer-heart">♡ ୨୧ ♡</div>
+  Made by Amiel.
+  <br>
+  <span>#CURARENG.</span>
+</footer>
+
+<script>
+/* ==========================================
+   YOUR 10 PHOTO MEMORIES, SONGS, AND LYRICS
+========================================== */
+
+const memories = [
+  {
+    title: "SHANUEL",
+    image: "img/3.jpeg",
+    song: "When I Met You — Apo Hiking Society",
+    audio: "songs/song1.mp3",
+    lyrics: `There I was an empty piece of a shell
+Just mindin' my own world
+Without even knowin' what love and life were all about
+
+Then you came
+You brought me out of the shell
+You gave the world to me
+And before I knew
+There I was so in love with you
+
+You gave me a reason for my being
+And I love what I'm feelin'
+You gave me a meaning to my life
+Yes, I've gone beyond existing
+And it all began when I met you
+
+I love the touch of your hair
+And when I look in your eyes
+I just know, I know I'm on to something good
+
+And I'm sure my love for you will endure
+Your love will light up my world
+And take all my cares away with the aching part of me
+
+You gave me a reason for my being
+And I love what I'm feelin'
+You gave me a meaning to my life
+Yes, I've gone beyond existing
+And it all began when I met you
+
+You taught me how to love
+You showed me how tomorrow and today
+My life is different from the yesterday
+And you, you taught me to love
+And darling, I will always cherish you
+Today, tomorrow and forever
+
+And I'm sure when evening comes around
+I know we'll be making love like never before
+My love, who could ask for more?
+
+You gave me a reason for my being
+And I love what I'm feelin'
+You gave me a meaning to my life
+Yes, I've gone beyond existing
+And it all began when I met you
+When I met you
+You gave me a reason for my being
+And I love what I'm feelin'
+You gave me a meaning to my life
+Yes, I've gone beyond existing
+And it all began when I met you
+When I met you.
+
+This is where you can write what this memory means to you.`
+  },
+
+  {
+    title: "JVANE",
+    image: "img/4.jpeg",
+    song: "Aphrodite - The Ridleys",
+    audio: "songs/song2.mp3",
+    lyrics: `And it's all because
+I see the galaxies when I look in your eyes
+And I, can't speak, no, I, can't speak at all
+I swear to Zeus, you're Aphrodite in disguise
+Don't think that you could hide it from me
+Oh, no, I never thought I'd get this close to someone so divine
+Oh, I, can't breathe, no, I, can't breathe at all
+Aphrodite, could you, could you please be mine?
+Oh
+Could you please be mine?
+Oh, mine
+Here you are, I've waited so long
+Hoping you would sit down and stay
+'Cause with the stars, I've been dancing along
+Like a fool, so you'd look my way
+You're the moon that glows in the sky
+Lighting up my world when it's blue
+And here I sing, though late in the night
+Hope you know I sing just for you
+Ohh, you've got me in a daze, yeah
+No, it's not another phase
+You gave me one look and now I can't get my mind off of you
+And it's all because
+I see the galaxies when I look in your eyes
+And I, can't speak, no, I, can't speak at all
+I swear to Zeus, you're Aphrodite in disguise
+Don't think that you could hide it from me
+Oh, no, I never thought I'd get this close to someone so divine
+Oh, I, can't breathe, no, I, can't breathe at all
+Aphrodite, could you, could you please be mine?
+Oh
+Could you please be mine?
+Oh, mine
+Could you please be mine?
+Oh, mine.
+
+Sa dami ng bituin sa madilim na langit, ikaw lang ang gusto kong makasama sa bawat saglit.`
+  },
+
+  {
+    title: "SHANVI",
+    image: "img/5.jpeg",
+    song: "Best Part — Daniel Caesar ft. H.E.R.",
+    audio: "songs/song3.mp3",
+    lyrics: `You don't know, babe
+When you hold me
+And kiss me slowly, it's the sweetest thing
+And it don't change
+If I had it my way
+You would know that you are
+You're the coffee that I need in the morning
+You're my sunshine in the rain when it's pouring
+Won't you give yourself to me?
+Give it all, oh
+I just wanna see
+I just wanna see how beautiful you are
+You know that I see it, I know you're a star
+Where you go, I'll follow, no matter how far
+If life is a movie, know you're the best part, oh-ooh
+You're the best part, oh-ooh
+Best part
+It's this sunrise
+And those brown eyes, yes
+You're the one that I desire
+When we wake up
+And then we make love (make love)
+It makes me feel so nice
+You're my water when I'm stuck in the desert
+You're the Tylenol I take when my head hurts
+You're the sunshine on my life
+I just wanna see how beautiful you are
+You know that I see it, I know you're a star
+Where you go, I'll follow, no matter how far
+If life is a movie, then you're the best part, oh
+You're the best part, ooh
+(You're the best part) best part
+If you love me, won't you say something?
+If you love me, won't you?
+Won't you?
+If you love me, won't you say something? (Say something)
+If you love me, won't you?
+Love me, won't you?
+If you love me, won't you say something?
+If you love me, won't you? Ah
+If you love me, won't you say something? (Say something)
+If you love me, won't you?
+Love me, won't you?
+If you love me, won't you say something? (Please say something)
+If you love me, won't you? Ah
+If you love me, won't you say something? (Say something)
+If you love me, won't you?
+Love me, won't you?.
+
+Kung ang mundo ay puno ng pagsubok at sakit, basta ikaw ang kasama, lahat ay magiging sulit.`
+  },
+
+  {
+    title: "SHAVELLE",
+    image: "img/6.jpeg",
+    song: "Diwata - Abra ",
+    audio: "songs/song4.mp3",
+    lyrics: `Kapag nariyan ka, bumabagal ang ikot ng mundo
+Hindi kita dapat ginugusto pero natutukso
+Ano man ang sabihin nila, hindi kita ipagkakaila
+'Pagkat ikaw lang ang minamahal ko, oh aking diwata
+
+(Aking diwata)
+Ikaw ang pinakamaganda
+Kapag minamasdan kita, parang nagmamalikmata
+(Aking diwata)
+Tamang hinala, di makapaniwala
+Na nakita na ang pinakamakinang na tala
+(Talagang hiwaga)
+Walang katapat
+Bagama't pinagbawalan
+Ipaglalaban ka sapagka't
+Ikaw lang ang minamahal ko
+Oh aking diwata
+
+Naaalala ko pa n'ung una ka masilayan, nanghihinayang
+Gustung-gusto kita kausapin,
+Makilala, subalit may kaba
+Kaya nahihiya lang
+
+Sinayang, ang nakatakdang tadhana
+Karapat-dapat nga ba na magkandarapa
+Sa isang prinsesa na may delikadesa
+Kesa sa gano'n baka sakaling game ka maging reyna
+
+Date tayo, oo, ikaw at ako
+Liparin natin ang iba't-ibang parte ng mundo
+Tugma pa rin kahit sabihing hindi tayo bagay
+Kasi tao tayo, si Maragsa at Malumanay
+
+Kung sabagay, karangalan kong alagaan
+At pahalagahan ang natural mong kagandahan
+Aminin ko man o hindi
+Kapag nasa paligid ay pasimple na nangingiti
+Sana kako tamaan
+
+Kapag nariyan ka, bumabagal ang ikot ng mundo
+Hindi kita dapat ginugusto pero natutukso
+Ano man ang sabihin nila, hindi kita ipagkakaila
+'Pagkat ikaw lang ang minamahal ko, oh aking diwata
+
+(Aking diwata)
+Ikaw ang pinakamaganda
+Kapag minamasdan kita, parang nagmamalikmata
+(Aking diwata)
+Tamang hinala, di makapaniwala
+Na nakita na ang pinakamakinang na tala
+(Talagang hiwaga)
+Walang katapat
+Bagama't pinagbawalan
+Ipaglalaban ka sapagka't
+Ikaw lang ang minamahal ko
+Oh aking diwata
+
+Hanggang sa nagkakilala muli
+At unti-unti kang nakikilala, munti
+Pang tumitiklop na parang makahiya
+Naglakas loob ah, d'yan sa kaliwa
+Ang daming pumipila, daig pa'ng MRT
+Pero diba't sa pag-ibig mas kabit 'pag less than three
+Anong sagot, pwede mo 'kong tanungin
+May tanong ako sa'yo, pwede mo kong sagutin
+Sana oo na lang din
+Susubukang abutin
+Panaginip lang kita, kaya gusto kong antukin
+Oras na maghawak kamay baka bigla kang alukin
+Walang hiling na kapalit, gusto lang kitang mahalin
+
+Ikaw ang aking laging nais na makapiling
+Hindi Maria Clara kundi Maria Makiling
+Binibining napakaganda at wagas
+Walang wakas, samahan mo ko, sabay tayong mangarap nang mataas
+
+Kapag nariyan ka, bumabagal ang ikot ng mundo
+Hindi kita dapat ginugusto pero natutukso
+Ano man ang sabihin nila, hindi kita ipagkakaila
+'Pagkat ikaw lang ang minamahal ko, oh aking diwata
+
+N'ung nakita ko s'ya, 'di makapaniwala
+Sa taglay n'yang ganda, tinamaan din ako
+Teka bakit ganito, ba't napaparap ako
+'Di ba sabi ko sa'yo, 'wag mo na akong isama
+Para 'kong nasilaw sa kasama mong diwata
+
+Ngayon alam ko na kung ba't nasisiraan ka nang ulo
+Napapakanta ka na lang na parang ganito
+
+Kapag nariyan ka, bumabagal ang ikot ng mundo
+Hindi kita dapat ginugusto pero natutukso
+Ano man ang sabihin nila, hindi kita ipagkakaila
+'Pagka't ikaw lang ang minamahal ko, oh aking diwata
+
+(Aking diwata)
+Ikaw ang pinakamaganda
+Kapag minamasdan kita, parang nagmamalikmata
+(Aking diwata)
+Tamang hinala, 'di makapaniwala
+Na nakita na ang pinakamakinang na tala
+(Talagang hiwaga)
+Walang katapat
+Bagama't pinagbawalan
+Ipaglalaban ka sapagka't
+Ikaw lang ang minamahal ko
+Oh aking diwata
+.
+
+Kung ang pag-ibig ay isang karagatan, handa akong malunod sa ating pagmamahalan.`
+  },
+
+  {
+    title: "SHANEMANUEL",
+    image: "img/7.jpeg",
+    song: "Sanctuary - Joji",
+    audio: "songs/song5.mp3",
+    lyrics: `Go ahead and bark after dark, fallen star
+I'm your one-call away
+Motel halls, neon walls
+When night falls I am your escape
+When you lay alone, I ache
+Something I wanted to feel
+
+If you've been waiting for falling in love
+Babe, you don't have to wait on me
+'Cause I've been aiming for heaven above
+But an angel ain't what I need
+
+Not anyone, you're the one
+More than fun, you're the sanctuary
+'Cause what you want is what I want, sincerity
+
+Souls that dream alone lie awake
+I'll give you something so real
+
+If you've been waiting for falling in love
+Babe, you don't have to wait on me
+'Cause I've been aiming for heaven above
+But an angel ain't what I need
+
+Hold me oh so close, 'cause you never know
+Just how long our lives will be
+
+If you've been waiting for falling in love
+Babe, you don't have to wait on me
+'Cause I've been aiming for heaven above
+But an angel ain't what I need
+.
+
+Kung ang pag-ibig ay isang karagatan, handa akong malunod sa iyong pagmamahalan.`
+  },
+
+  {
+    title: "JSHANE",
+    image: "img/8.jpeg",
+    song: "Padabataka - dwta ",
+    audio: "songs/song6.mp3",
+    lyrics: `Kumusta ang biyahe?
+Napagal ka daw?
+Mari na, pinagluto ta ka na
+Bicol express, pancit bato
+Igwang laing na may siling labyu
+Ay, labuyo
+Kumusta ang aldaw mo?
+Ibahan mo ako
+Lilibuton niyatong duwa an kaBikolan
+Garo ka si Mayon na magayon
+Digdi ka lang
+Padaba ta ka
+Daing ibang mumuyahon kundi ika
+Papadabaon ta ka
+Sagkod pa man kita maggurang
+Daing ibang papadabaon pa, kundi ika
+Kumusta? Pahingalo na, marabason kita
+Binakalan ta kang pili nut, asin
+Mga pangpasalubong (pasalubong, pasalubong)
+Sana napaugma ta kang maray
+Sako ka lang
+Padaba ta ka
+Daing ibang mumuyahon kundi ika
+Papadabaon ta ka
+Sagkod pa man kita maggurang
+Daing ibang papadabaon pa, kundi ika
+Ini pa lan sa ngunyan an kaya kong gibuhon
+Pa'no pa kaya kun sabihon ko na?
+Padaba ta ka
+Daing ibang mumuyahon, kundi ika
+Mahal kita
+Walang ibang gugustuhin, kundi ikaw
+Mamahalin kita
+Hanggang sa ating pagtanda
+Walang ibang mamahalin, kundi ikaw
+Walang ibang mamahalin, kundi ikaw
+Walang ibang mamahalin, kundi ikaw.
+
+Sa bawat bituin na aking pinagmamasdan, mukha mo ang nais kong laging matanaw sa kalangitan.`
+  },
+
+  {
+    title: "EMSHAN",
+    image: "img/9.jpeg",
+    song: "Japanese Denim - Amiel Caesar",
+    audio: "songs/song7.mp3",
+    lyrics: `I don't stand in line, I don't pay for clubs, fuck that, yeah
+But I wait for you
+I don't like to drink, I don't like to think, fuck that, ooh
+But I ponder you, oh
+I'm bending it over
+You're my four leaf clover
+I'm so in love, so in love
+There's no one above up above
+Forever's a long time, yes
+My blue jeans
+Will last me all
+My life, ohh yes
+So should we
+I'm spending all, yeah
+This time, ohh
+Met you at the shop, sun was gettin' hot, I'm lonely, yeah
+I'm in the city on my own
+Never would've thought you'd be the one, I got a homie
+But that's the way it goes
+I'm reaching Nirvana
+Goodbye sweet Rwanda
+High school was never for me, yeah
+I say let it be, let it be
+Forever's a long time, yeah
+My blue jeans
+Will last me all
+My life, ohh yes
+So should we
+I'm spending all
+This time
+You don't even know me
+You don't even know me, yes
+I'm hanging from the tree
+I'm hanging from the tree.
+
+It is the little things that make us happy.`
+  },
+
+  {
+    title: "SHANV",
+    image: "img/10.jpeg",
+    song: "Blessed - Amiel Caesar",
+    audio: "songs/song8.mp3",
+    lyrics: `Everywhere that I go, everywhere that I be
+If you were not surrounding me with your energy
+I don't wanna be there, don't wanna be anywhere
+Any place that I can't feel you, I just wanna be near you
+
+And yes, I'm a mess but I'm blessed
+To be stuck with you
+Sometimes it gets unhealthy
+We can't be by ourselves we
+We'll always need each other, and
+Yes, I'm a mess but I'm blessed
+To be stuck with you
+I just want you to know that
+If I could I swear I'll go back
+Make everything all better, whoa
+
+It's the things that you say
+It's the way that you pray
+Prey on my insecurities
+I know you're feeling me
+I know sometimes I do wrong
+But hear the words of this song
+When I go I don't stay gone for long
+Don't know what's going on
+
+And yes, I'm a mess but I'm blessed
+To be stuck with you
+Sometimes it gets unhealthy
+We can't be by ourselves we
+We'll always need each other, and
+Yes, I'm a mess but I'm blessed
+To be stuck with you
+I just want you to know that
+If I could I swear I'll go back
+Make everything all better, whoa
+
+And I'm coming back home to you
+And I'm coming back home to you
+I'm coming back home
+I'm coming back home to you
+I'm coming back home
+I'm coming back home to you
+I'm coming back home
+I'm coming back home to you
+I'm coming back home
+
+I'm coming back home to you
+I'm coming back home
+I'm coming back home to you
+I'm coming back home
+
+And yes, I'm a mess but I'm blessed
+To be stuck with you
+Sometimes it gets unhealthy
+We can't be by ourselves we
+We'll always need each other, and
+Yes, I'm a mess but I'm blessed
+To be stuck with you
+I just want you to know that
+If I could I swear I'll go back
+Make everything all better, whoa.
+
+Kung puso ko'y isang papel na kayang sulatan, pangalan mo ang una kong ilalagay sa kasaysayan.`
+  },
+
+  {
+    title: "ESHAN",
+    image: "img/11.jpeg",
+    song: "Favorite Vice - Arthur Amiel",
+    audio: "songs/song9.mp3",
+    lyrics: `So, open up your heart to me
+Open up your heart to me
+Open up your heart to me
+Open up your heart to me, baby
+Now, open up your heart to me
+Open up your heart to me
+Open up your heart to me
+Open up your heart to me
+You know you're my favorite vice
+You're the one I want when I am stressing, hmm-mmm
+Oh, that kiss was so precise
+Got me begging in my mind, undress, babe.
+
+Sa bawat tibok ng pusong umiibig, ikaw ang dahilan kung bakit ito nananabik.`
+  },
+
+  {
+    title: "MANSHANE",
+    image: "img/12.jpeg",
+    song: "Sure Thing - Miguel",
+    audio: "songs/song10.mp3",
+    lyrics: `You could be the lover, I'd be the fighter, babe
+If I'm the blunt (uh), you could be the lighter, babe
+Fire it up
+Writer, baby, you could be the quote (uh), yeah
+If I'm the lyric, baby, you could be the note (uh)
+Record that
+Saint, I'm a sinner (uh), prize, I'm a winner (uh)
+And it's you, what did I do to deserve that?
+Paper, baby, I'll be the pen
+Say that I'm the one 'cause you are ten
+Real and not pretend
+Even when the sky comes fallin' (yeah, yeah, yeah)
+Even when the sun don't shine
+I got faith in you and I
+So put your pretty little hand in mine
+Even when we're down to the wire, baby (you could bet that, never gotta sweat that)
+Even when it's do or die (you could bet that, never gotta sweat that)
+We can do it, baby, simple and plain (you could bet that, never gotta sweat that)
+'Cause this love is a sure thing, yeah (you could bet that, never gotta sweat that)
+Uh, now rock with me, babe
+Let me hold you in my arms, talk with me, babe, yeah-yeah
+Uh, now rock with me, babe
+Let me hold you in my arms, talk with me, babe, yeah-yeah
+This love between you and I is simple as pie, baby
+It's such a sure thing, it's such a sure thing
+Oh, it's such a sure thing, yeah-yeah, yeah (oh, it's such a sure thing)
+Even when the sky comes fallin' (you could bet that, never gotta sweat that)
+Even when the sun don't shine (you could bet that, never gotta sweat that)
+I got faith in you and I (you could bet that, never gotta sweat that)
+So put your pretty little hand in mine (you could bet that, never gotta sweat that)
+Even when we're down to the wire, babe (you could bet that, never gotta sweat that)
+Even when it's do or die (you could bet that, never gotta sweat that)
+We can do it, baby, simple and plain (you could bet that, never gotta sweat that)
+'Cause this love is a sure thing (you could bet that, never gotta sweat that)
+Love you like a brother (you could bet that, never gotta sweat that)
+Treat you like a friend (you could bet that, never gotta sweat that)
+Respect you like a lover (you could bet that, never gotta sweat that)
+Oh-whoa, oh-whoa, oh-whoa.
+
+Kahit ang mundo ay tuluyang magbago, ikaw pa rin ang pipiliin ko sa bawat yugto.`
+  }
+];
+
+/* ==========================================
+   GET WEBSITE ELEMENTS
+========================================== */
+
+const gallery = document.getElementById("gallery");
+const modal = document.getElementById("modal");
+const modalPhoto = document.getElementById("modalPhoto");
+const memoryTitle = document.getElementById("memoryTitle");
+const songName = document.getElementById("songName");
+const lyrics = document.getElementById("lyrics");
+const status = document.getElementById("status");
+const music = document.getElementById("music");
+const closeButton = document.getElementById("closeButton");
+
+/* ==========================================
+   CREATE THE 10 HANGING PHOTOS
+========================================== */
+
+memories.forEach((memory, index) => {
+  const photo = document.createElement("article");
+
+  photo.className = "photo";
+  photo.tabIndex = 0;
+  photo.setAttribute("role", "button");
+  photo.setAttribute(
+    "aria-label",
+    `Open memory: ${memory.title}`
+  );
+
+  const tilts = [-4, 3, -2, 4, -3];
+  photo.style.setProperty(
+    "--tilt",
+    `${tilts[index % tilts.length]}deg`
+  );
+
+  const nail = document.createElement("span");
+  nail.className = "nail";
+
+  const frame = document.createElement("div");
+  frame.className = "frame";
+
+  const img = document.createElement("img");
+  img.src = memory.image;
+  img.alt = memory.title;
+  img.loading = "lazy";
+
+  const caption = document.createElement("div");
+  caption.className = "caption";
+  caption.textContent = memory.title;
+
+  frame.appendChild(img);
+  frame.appendChild(caption);
+
+  photo.appendChild(nail);
+  photo.appendChild(frame);
+
+  photo.addEventListener("click", () => {
+    openMemory(index);
+  });
+
+  photo.addEventListener("keydown", event => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openMemory(index);
+    }
+  });
+
+  gallery.appendChild(photo);
+});
+
+/* ==========================================
+   OPEN PHOTO, SHOW LYRICS, PLAY SONG
+========================================== */
+
+function openMemory(index) {
+  const memory = memories[index];
+
+  // Stop any previously playing song.
+  music.pause();
+  music.currentTime = 0;
+
+  // Update popup content.
+  modalPhoto.src = memory.image;
+  modalPhoto.alt = memory.title;
+
+  memoryTitle.textContent = memory.title;
+  songName.textContent = memory.song;
+  lyrics.textContent = memory.lyrics;
+
+  // Show the popup.
+  modal.classList.add("show");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+
+  // Load the song assigned to this photo.
+  music.src = memory.audio;
+  music.load();
+
+  status.textContent = "Loading your song ♡";
+
+  // Play automatically after the photo is clicked.
+  music.play()
+    .then(() => {
+      status.textContent = "Now playing ♡ Enjoy this memory.";
+    })
+    .catch(() => {
+      status.textContent =
+        "Song could not play. Check that the audio file exists in your songs folder.";
+    });
+}
+
+/* ==========================================
+   CLOSE POPUP AND STOP MUSIC
+========================================== */
+
+function closeMemory() {
+  modal.classList.remove("show");
+  modal.setAttribute("aria-hidden", "true");
+
+  document.body.style.overflow = "";
+
+  music.pause();
+  music.currentTime = 0;
+}
+
+// Close using the X button.
+closeButton.addEventListener("click", closeMemory);
+
+// Close when clicking outside the popup.
+modal.addEventListener("click", event => {
+  if (event.target === modal) {
+    closeMemory();
+  }
+});
+
+// Close using Escape.
+document.addEventListener("keydown", event => {
+  if (
+    event.key === "Escape" &&
+    modal.classList.contains("show")
+  ) {
+    closeMemory();
+  }
+});
+</script>
+
+</body>
+</html>

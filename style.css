@@ -1,0 +1,198 @@
+
+/* ===== PINK DOMINANT + VISIBLE BABY BLUE ♡ ===== */
+
+:root {
+  --pink: #f4a9c5;
+  --light-pink: #ffe1ec;
+  --blue: #b8d9ff;
+  --light-blue: #e3f0ff;
+  --lavender: #e5d5f5;
+  --text: #62516f;
+  --deep-pink: #c75e8b;
+}
+
+body {
+  color: var(--text);
+
+  background:
+    radial-gradient(
+      ellipse at 12% 12%,
+      #ffcfdf 0%,
+      transparent 38%
+    ),
+    radial-gradient(
+      ellipse at 90% 22%,
+      #a9d2ff 0%,
+      transparent 42%
+    ),
+    radial-gradient(
+      ellipse at 75% 80%,
+      #c5e1ff 0%,
+      transparent 35%
+    ),
+    radial-gradient(
+      ellipse at 20% 90%,
+      #f4b7d0 0%,
+      transparent 40%
+    ),
+    linear-gradient(
+      135deg,
+      #f7c2d7 0%,
+      #f8d8e8 42%,
+      #d6e8ff 100%
+    );
+
+  background-attachment: fixed;
+}
+
+/* Pink and blue background glows */
+
+.glow-one {
+  background: #ff8fba;
+  top: 20%;
+  left: -120px;
+  opacity: 0.4;
+}
+
+.glow-two {
+  background: #78baff;
+  bottom: 10%;
+  right: -100px;
+  opacity: 0.4;
+}
+
+/* Heading: stronger rose pink */
+
+header h1 {
+  color: #bd527e;
+  text-shadow: 2px 3px 0 #ffffffa8;
+}
+
+.eyebrow,
+.eyebrow-small {
+  color: #c05e8a;
+}
+
+header p,
+.hint,
+footer {
+  color: #735d82;
+}
+
+/* Photo frames: soft pink with white borders */
+
+.frame {
+  background: linear-gradient(145deg, #fffaff, #ffeaf2);
+  border: 1px solid #ffffff;
+  box-shadow: 0 8px 20px #c36c9440;
+}
+
+.frame img {
+  background: #cfe4ff;
+}
+
+.caption {
+  color: #89526f;
+}
+
+.photo::before {
+  background: linear-gradient(#d4a4c1, #8cb7e9);
+}
+
+.nail {
+  background: linear-gradient(135deg, #f0c0d7, #8cb7e9);
+}
+
+/* Popup: pink is dominant, blue remains noticeable */
+
+.modal {
+  background: #57344fba;
+}
+
+.modal-content {
+  background: linear-gradient(
+    135deg,
+    #fff0f6 0%,
+    #ffe0ec 48%,
+    #dcecff 100%
+  );
+
+  border: 1px solid #ffffff;
+  box-shadow: 0 25px 70px #66334e55;
+}
+
+.modal-photo {
+  box-shadow: 0 8px 22px #c36c9440;
+}
+
+.details h2 {
+  color: #bd527e;
+}
+
+/* Song title */
+
+.song-name {
+  color: #795b91;
+  background: linear-gradient(
+    110deg,
+    #fbd6e5,
+    #e1edff
+  );
+
+  border-left: 4px solid #87b8f2;
+  border-radius: 0 9px 9px 0;
+}
+
+/* Lyrics area: visible baby blue */
+
+.lyrics {
+  color: #535c7e;
+
+  background: linear-gradient(
+    135deg,
+    #dcecff 0%,
+    #eaf4ff 55%,
+    #ffe8f1 100%
+  );
+
+  border: 1px solid #bdd7fa;
+  border-radius: 12px;
+  scrollbar-color: #91b9ed #eaf2ff;
+}
+
+/* Close button */
+
+.close {
+  color: #a94d79;
+  background: #ffd9e8;
+}
+
+.close:hover {
+  color: #536d99;
+  background: #cfe4ff;
+}
+
+/* Tiny decorative hearts */
+
+.photo::after {
+  color: #d66f9d;
+}
+
+/* Footer heart */
+
+footer .footer-heart {
+  color: #ce6594;
+}
+
+/* Mobile popup colors */
+
+@media (max-width: 600px) {
+  .modal-content {
+    background: linear-gradient(
+      145deg,
+      #fff0f6,
+      #fbdde9 60%,
+      #dcecff
+    );
+  }
+}
